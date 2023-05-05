@@ -2,10 +2,12 @@
     import axios from 'axios';
     import {store} from '../store';
     import cartaSingola from './cartaSingola.vue';
+    import bottoni from './bottoni.vue';
     export default {
       name: 'mainComponent',
       components: {
         cartaSingola,
+        bottoni,
       },
 
     data(){
@@ -28,6 +30,7 @@
 </script>
 
 <template>
+    <bottoni/>
     <div class="boxCard">
         <cartaSingola v-for="(element, index) in store.arrayCarte" :carteciclate="element" />
         
@@ -44,5 +47,6 @@
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
+        position: relative;
     }
 </style>
