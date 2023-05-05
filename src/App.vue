@@ -3,7 +3,15 @@
 </script>
 
 <template>
-  <h1>Ciao mondo</h1>
+  <header>
+
+  </header>
+  <main>
+
+  </main>
+  <footer>
+    
+  </footer>
 </template>
 
 <style lang="scss">
