@@ -6,7 +6,7 @@
 
     data(){
         return{
-            store
+            store,
         }
     },
     created(){
@@ -14,11 +14,16 @@
     },
     methods: {
         chiamataApi() {
-            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php').then( (res) =>{
-                this.store.arrayCarte = res.data
-                console.log (this.store.arrayCarte)
+            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php')
+            .then( (res) =>{
+                this.store.arrayCarte = res.data.data
+
+                this.paginaVisualizzata()
             })
-        }
+        },
+        paginaVisualizzata() {
+            this.store.pagina = this.store.arrayCarte.filter((element, index) => index >= 0 && index < 15 )
+         }
 
     }
     }
