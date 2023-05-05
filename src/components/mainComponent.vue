@@ -1,8 +1,12 @@
 <script>
     import axios from 'axios';
     import {store} from '../store';
+    import cartaSingola from './cartaSingola.vue';
     export default {
       name: 'mainComponent',
+      components: {
+        cartaSingola,
+      },
 
     data(){
         return{
@@ -23,6 +27,7 @@
         },
         paginaVisualizzata() {
             this.store.pagina = this.store.arrayCarte.filter((element, index) => index >= 0 && index < 15 )
+            console.log(this.store.pagina)
          }
 
     }
@@ -31,6 +36,7 @@
 
 <template>
     <div class="boxCard">
+        <cartaSingola v-for="(element, index) in store.pagina"/>
         
     </div>
 </template>
