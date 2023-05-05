@@ -1,1 +1,8 @@
 @import 'node_modules/bootstrap/scss/bootstrap';
+@import './partials/variables';
+
+main {
+    height: 90vh;
+    background-color: $orange;
+    width: 100%;
+}
