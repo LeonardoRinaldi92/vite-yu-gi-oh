@@ -18,25 +18,18 @@
     },
     methods: {
         chiamataApi() {
-            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php')
+            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=12&offset=0')
             .then( (res) =>{
                 this.store.arrayCarte = res.data.data
-
-                this.paginaVisualizzata()
             })
-        },
-        paginaVisualizzata() {
-            this.store.pagina = this.store.arrayCarte.filter((element, index) => index >= 0 && index < 15 )
-            console.log(this.store.pagina)
-         }
-
+        },       
     }
     }
 </script>
 
 <template>
     <div class="boxCard">
-        <cartaSingola v-for="(element, index) in store.pagina"/>
+        <cartaSingola v-for="(element, index) in store.arrayCarte" :carteciclate="element" />
         
     </div>
 </template>
@@ -44,9 +37,12 @@
 <style lang="scss" scooped>
     .boxCard{
         width: 80%;
-        margin: auto;
-        border: 1px solid black;
+        margin: 0 auto;
         height: 100%;
-        padding: 30px;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
     }
 </style>
