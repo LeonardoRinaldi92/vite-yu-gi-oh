@@ -12,7 +12,9 @@
 
     data(){
         return{
+
             store,
+
         }
     },
     created(){
@@ -20,7 +22,7 @@
     },
     methods: {
         chiamataApi() {
-            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=12&offset=0')
+            axios.get(store.pathBase)
             .then( (res) =>{
                 this.store.arrayCarte = res.data.data
             })
