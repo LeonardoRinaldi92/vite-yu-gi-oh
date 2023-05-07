@@ -9,6 +9,9 @@ export const store = reactive (
         pathOnScreen: '',
         pathFilterAll: 'https://db.ygoprodeck.com/api/v7/archetypes.php',
         arrayFilterArchetype: [],
+        pathFilter: '?archetype=',
+        filterArchetype: '',
+
         
     }
 )
