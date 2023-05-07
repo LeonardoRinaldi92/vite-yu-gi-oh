@@ -10,21 +10,18 @@
             },
         methods: {
             avanti(){
-                store.numero += 15
-                store.pathBase = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=12&offset=' + store.numero
-                console.log(store.pathBase)
-                axios.get(store.pathBase)
+                store.numero += 12           
+                store.pathOnScreen = store.pathBase + store.pathPagina + store.numero
+                axios.get(this.store.pathOnScreen)
                 .then( (res) =>{
                 this.store.arrayCarte = res.data.data
                 })
             },
             indietro(){
-                if (store.numero > 0) {
-                    
-                    store.numero -= 15
-                    store.pathBase = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=12&offset=' + store.numero
-                    console.log(store.pathBase)
-                    axios.get(store.pathBase)
+                if (store.numero > 0) {                   
+                    store.numero -= 12
+                    store.pathOnScreen = store.pathBase + store.pathPagina + store.numero
+                    axios.get(this.store.pathOnScreen)
                     .then( (res) =>{
                     this.store.arrayCarte = res.data.data
                     })
