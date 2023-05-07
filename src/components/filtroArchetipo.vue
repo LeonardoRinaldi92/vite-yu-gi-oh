@@ -53,7 +53,7 @@
                 {{element.archetype_name}}
             </option>
         </select>
-        <span>
+        <span v-if="store.filterArchetype !== ''">
             ELEMENTI TROVATI : {{ GeneralArrayFiltered.length }}
         </span>
     </div>

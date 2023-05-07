@@ -59,7 +59,7 @@
 </script>
 
 <template>
-<button v-if="(store.filteredArrayLength - store.numero) > 11"  class="right" @click="avanti">avanti</button>
+<button v-if="(store.filteredArrayLength - store.numero) > 11 || store.filterArchetype == ''"  class="right" @click="avanti">avanti</button>
 <button v-if="store.numero > 0" class="left"  @click="indietro">indietro</button>
 </template>
 
