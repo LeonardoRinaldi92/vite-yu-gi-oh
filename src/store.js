@@ -11,7 +11,6 @@ export const store = reactive (
         arrayFilterArchetype: [],
         pathFilter: '?archetype=',
         filterArchetype: '',
-
-        
+        filteredArrayLength: '',
     }
 )

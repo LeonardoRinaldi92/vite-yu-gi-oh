@@ -23,6 +23,7 @@
                 axios.get(this.GeneralPathFiltered)
                 .then( (res) =>{
                 this.GeneralArrayFiltered = res.data.data
+                this.salvaLunghezza()
                 })
             },
                 
@@ -31,7 +32,15 @@
                 store.pathPagina= '&num=12&offset=',
                 store.pathOnScreen = store.pathBase + store.pathFilter + store.filterArchetype + store.pathPagina + store.numero
                 this.GeneralPathFiltered = store.pathBase + store.pathFilter + store.filterArchetype
+            },
+
+            salvaLunghezza(){
+                store.filteredArrayLength = this.GeneralArrayFiltered.length
+                console.log(store.filteredArrayLength)
+
             }
+
+
         },
     }
 </script>

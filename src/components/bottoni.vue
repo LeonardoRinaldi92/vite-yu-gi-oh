@@ -10,12 +10,23 @@
             },
         methods: {
             avanti(){
-                store.numero += 12           
-                store.pathOnScreen = store.pathBase + store.pathPagina + store.numero
-                axios.get(this.store.pathOnScreen)
-                .then( (res) =>{
-                this.store.arrayCarte = res.data.data
-                })
+                if (store.filterArchetype == '') {
+                    store.numero += 12           
+                    store.pathOnScreen = store.pathBase + store.pathPagina + store.numero
+                    axios.get(this.store.pathOnScreen)
+                    .then( (res) =>{
+                    this.store.arrayCarte = res.data.data
+                    })     
+                } else {
+                    store.numero += 12           
+                    store.pathOnScreen = store.pathBase + store.pathFilter + store.filterArchetype + store.pathPagina + store.numero
+                    axios.get(store.pathOnScreen)
+                    .then( (res) =>{
+                    this.store.arrayCarte = res.data.data
+                    })
+
+                }
+                
             },
             indietro(){
                 if (store.numero > 0) {                   
