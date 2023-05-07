@@ -16,26 +16,41 @@
                     axios.get(this.store.pathOnScreen)
                     .then( (res) =>{
                     this.store.arrayCarte = res.data.data
+                    console.log(store.numero)
                     })     
                 } else {
-                    store.numero += 12           
-                    store.pathOnScreen = store.pathBase + store.pathFilter + store.filterArchetype + store.pathPagina + store.numero
-                    axios.get(store.pathOnScreen)
-                    .then( (res) =>{
-                    this.store.arrayCarte = res.data.data
-                    })
-
+                    if(store.filteredArrayLength > 12) {
+                        if (store.numero < store.filteredArrayLength){
+                            store.numero += 12           
+                            store.pathOnScreen = store.pathBase + store.pathFilter + store.filterArchetype + store.pathPagina + store.numero
+                            axios.get(store.pathOnScreen)
+                            .then( (res) =>{
+                            this.store.arrayCarte = res.data.data
+                            console.log(store.numero)
+                            })
+                        }
+                    }
                 }
-                
             },
             indietro(){
-                if (store.numero > 0) {                   
-                    store.numero -= 12
+                if (store.numero > 0) {
+                    if (store.filterArchetype == '') {
+                    store.numero -= 12           
                     store.pathOnScreen = store.pathBase + store.pathPagina + store.numero
                     axios.get(this.store.pathOnScreen)
                     .then( (res) =>{
                     this.store.arrayCarte = res.data.data
-                    })
+                    console.log(store.numero)
+                    })     
+                } else {
+                    store.numero -= 12           
+                        store.pathOnScreen = store.pathBase + store.pathFilter + store.filterArchetype + store.pathPagina + store.numero
+                        axios.get(store.pathOnScreen)
+                        .then( (res) =>{
+                        this.store.arrayCarte = res.data.data
+                        console.log(store.numero)
+                        })
+                    }                   
                 }
             },
         },
