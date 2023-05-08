@@ -14,7 +14,7 @@
             },
         methods:{
             applicaFiltro(){
-                store.filterArchetype = this.Archetype.split(' ').join('%20')
+                store.filterArchetype = this.Archetype
                 this.pathFiltrato()
                 axios.get(store.pathOnScreen)
                 .then( (res) =>{
@@ -64,7 +64,7 @@
         <div>
             <select id="filtoArchetipo" v-model="Archetype" @change="applicaFiltro">
                 <option value="" disabled> Cerca per Archetipo</option>
-                <option v-for="(element, index) in store.arrayFilterArchetype" :key="index" :value="element.archetype_name">
+                <option v-for="(element, index) in store.arrayFilterArchetype" :key="index" :value="element.archetype_name.split(' ').join('%20')">
                     {{element.archetype_name}}
                 </option>
             </select>
