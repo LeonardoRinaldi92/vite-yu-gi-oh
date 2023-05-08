@@ -16,9 +16,21 @@
 <template>
     <div class="carta">
         <img :src="carteciclate.card_images[0].image_url" alt="">
-        <span>
-            {{ carteciclate.desc }}
-        </span>
+        <div>
+            <p>
+                NAME : {{carteciclate.name }}
+            </p>
+            <p v-if="carteciclate.type !== 'Spell Card' && carteciclate.type !== 'Trap Card'">
+                ATK : {{carteciclate.atk }}
+            </p>
+            <p v-if="carteciclate.type !== 'Spell Card' && carteciclate.type !== 'Trap Card'">
+                DEF : {{ carteciclate.def }}
+            </p>
+            <p v-if="carteciclate.type == 'Spell Card' || carteciclate.type == 'Trap Card'">
+                {{carteciclate.desc }}
+            </p>
+            
+        </div>
         
     </div>
 </template>
@@ -32,7 +44,7 @@
         align-items: center;
         padding: 2px;
         position: relative;
-        &:hover span {
+        &:hover div {
             display: block;
             cursor: default;
         }
@@ -43,18 +55,26 @@
             box-shadow: 3px 17px 18px -1px #000000;
             display: block;
         }
-        span{
+        div{
             position: absolute;
-            text-transform: uppercase;
-            top:60px;
+            display: flex;
+            align-items: center;      
+            top:0px;
             left: 2px;
             right:2px;
             background-color: rgba(128, 128, 128, 0.845);
-            color: white;
-            line-height: 0.8rem;
-            font-size: small;
+            max-height: 260px;
+            overflow-y: auto;
+          
             padding: 10px;
             display: none;
+            p {
+                text-transform: uppercase;
+                color: white;
+                line-height: 0.8rem;
+                font-size: small;
+
+            }
         }
 
     }
