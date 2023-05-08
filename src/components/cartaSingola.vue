@@ -35,7 +35,7 @@
     </div>
 </template>
 
-<style lang="scss" scooped>
+<style lang="scss" scoped>
 
     .carta{
         flex-basis: calc(100%/ 6 - 5px);

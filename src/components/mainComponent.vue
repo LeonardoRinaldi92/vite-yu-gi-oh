@@ -56,7 +56,7 @@ import FiltroArchetipo from './filtroArchetipo.vue';
     </div>
 </template>
 
-<style lang="scss" scooped>
+<style lang="scss" scoped>
     .boxCard{
         width: 80%;
         margin: 0 auto;

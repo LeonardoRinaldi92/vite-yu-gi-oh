@@ -38,6 +38,20 @@
                 store.filteredArrayLength = this.GeneralArrayFiltered.length
                 console.log(store.filteredArrayLength)
 
+            },
+
+            reset(){
+                if (store.numero !== 0 || this.Archetype !== ''){
+                    this.Archetype = '',
+                    store.numero = 0,
+                    store.pathPagina= '?num=12&offset=',
+                    store.pathOnScreen = store.pathBase + store.pathPagina + store.numero
+                    axios.get(store.pathOnScreen)
+                    .then( (res) =>{
+                    store.arrayCarte = res.data.data
+                    })
+                }
+
             }
 
 
@@ -46,15 +60,37 @@
 </script>
 
 <template>
-    <div>
-        <select id="filtoArchetipo" v-model="Archetype" @change="applicaFiltro">
-            <option value="" disabled> ciao</option>
-            <option v-for="(element, index) in store.arrayFilterArchetype" :key="index" :value="element.archetype_name">
-                {{element.archetype_name}}
-            </option>
-        </select>
-        <span v-if="store.filterArchetype !== ''">
-            ELEMENTI TROVATI : {{ GeneralArrayFiltered.length }}
-        </span>
+    <div class="line">
+        <div>
+            <select id="filtoArchetipo" v-model="Archetype" @change="applicaFiltro">
+                <option value="" disabled> Cerca per Archetipo</option>
+                <option v-for="(element, index) in store.arrayFilterArchetype" :key="index" :value="element.archetype_name">
+                    {{element.archetype_name}}
+                </option>
+            </select>
+            <span v-if="store.filterArchetype !== ''">
+                ELEMENTI TROVATI : {{ GeneralArrayFiltered.length }}
+            </span>
+        </div>
+        <div>
+            <button @click="reset"> reset </button>
+        </div>
     </div>
+    
 </template>
+
+<style lang="scss" scooped>
+    .line{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        div{
+            button {
+            margin-left: 100px;
+        }
+
+        }
+
+    }
+
+</style>

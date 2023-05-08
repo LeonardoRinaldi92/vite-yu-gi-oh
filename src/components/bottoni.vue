@@ -63,7 +63,7 @@
 <button v-if="store.numero > 0" class="left"  @click="indietro">indietro</button>
 </template>
 
-<style lang="scss" scooped>
+<style lang="scss" scoped>
     button{
         position: absolute;
         text-transform: uppercase;
