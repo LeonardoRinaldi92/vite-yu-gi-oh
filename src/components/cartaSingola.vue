@@ -20,6 +20,9 @@
             <p>
                 NAME : {{carteciclate.name }}
             </p>
+            <p v-if="carteciclate.archetype">
+                ARCHETIPO : {{carteciclate.archetype }}
+            </p>
             <p v-if="carteciclate.type !== 'Spell Card' && carteciclate.type !== 'Trap Card'">
                 ATK : {{carteciclate.atk }}
             </p>
