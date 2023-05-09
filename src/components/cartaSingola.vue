@@ -61,12 +61,13 @@
         div{
             position: absolute;
             display: flex;
-            align-items: center;      
+            align-items: center;
+            justify-content: center;     
             top:0px;
+            bottom: 0px;
             left: 2px;
             right:2px;
             background-color: rgba(128, 128, 128, 0.845);
-            max-height: 260px;
             overflow-y: auto;
           
             padding: 10px;
